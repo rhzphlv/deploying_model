@@ -17,13 +17,15 @@ from feature_engine.imputation import (
 
 from deployment_model.config import config
 
+#normal sklearn pipeline
+#define what feature that we want to engineer
 house_pipe = Pipeline([
     
     ('missing_ind', AMI(
         variables=[i for i in config.ADD_MISSING_INDICATOR if i in config.SELECTED_FEATURES])),
     
-    ('imputer_num', ANI
-(        arbitrary_number=0,
+    ('imputer_num', ANI(
+        arbitrary_number=0,
         variables=[i for i in config.YEAR if i in config.SELECTED_FEATURES]+\
 		          [i for i in config.DISCRETE if i in config.SELECTED_FEATURES]+\
 		          [i for i in config.CONTINOUS if i in config.SELECTED_FEATURES])),

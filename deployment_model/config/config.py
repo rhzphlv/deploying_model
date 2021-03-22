@@ -1,14 +1,18 @@
 import pathlib
 import deployment_model
 
+#define directory
 ROOT_DIR = pathlib.Path(deployment_model.__file__).resolve().parent
 TRAINED_DIR = ROOT_DIR / "trained_model"
 DATASETS_DIR = ROOT_DIR / "datasets"
 
+#define pipeline name, test file, train file and target variable
+PIPELINE_NAME = "regression_model.pkl"
 TEST_DATA = "test.csv"
 TRAIN_DATA = "train.csv"
 TARGET = 'SalePrice'
 
+#define feature by how we impute them
 CATEGORICAL = [ 'MSZoning','Street','Alley','LotShape','LandContour',
 				'Utilities','LotConfig','LandSlope','Neighborhood','Condition1',
 				'Condition2','BldgType','HouseStyle','RoofStyle','RoofMatl',
