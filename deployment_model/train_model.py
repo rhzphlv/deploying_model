@@ -1,5 +1,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split as tts
+from sklearn.metrics import mean_squared_error, r2_score
+from math import sqrt
 import joblib
 
 from deployment_model import pipeline
@@ -10,7 +12,7 @@ def save_pipeline(*,pipeline_to_persist) -> None:
 	save_path = config.TRAINED_DIR / save_file_name
 	joblib.dump(pipeline_to_persist,save_path)
 
-	print('Save pipeline :\tDone')
+	print('Save pipeline done')
 
 def run_training()->None:
 	data = pd.read_csv(config.DATASETS_DIR/config.TRAIN_DATA)
@@ -23,11 +25,13 @@ def run_training()->None:
 
 	pipeline.house_pipe.fit(x_train, y_train)
 	
-	pred = pipeline.houseprice.predict(x_train)
-	print('train mse: {}'.format(mean_squared_error(y_train, pred)))
-	print('train rmse: {}'.format(sqrt(mean_squared_error(y_train, pred))))
-	print('train r2: {}'.format(r2_score(y_train, pred)))
-
+	pred = pipeline.house_pipe.predict(x_train)
+	print("\n")
+	print("Training results: \n")
+	print('Train mse\t: {}'.format(mean_squared_error(y_train, pred)))
+	print('Train rmse\t: {}'.format(sqrt(mean_squared_error(y_train, pred))))
+	print('Train r2 \t: {}'.format(r2_score(y_train, pred)))
+	print("\n")
 
 	save_pipeline(pipeline_to_persist = pipeline.house_pipe)
 

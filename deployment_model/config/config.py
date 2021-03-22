@@ -1,12 +1,12 @@
 import pathlib
 import deployment_model
 
-ROOT_DIR = pathlib.Path(deployment_model.__file).resolve().parent
+ROOT_DIR = pathlib.Path(deployment_model.__file__).resolve().parent
 TRAINED_DIR = ROOT_DIR / "trained_model"
 DATASETS_DIR = ROOT_DIR / "datasets"
 
 TEST_DATA = "test.csv"
-TRAIN_DATA = "train_data"
+TRAIN_DATA = "train.csv"
 TARGET = 'SalePrice'
 
 CATEGORICAL = [ 'MSZoning','Street','Alley','LotShape','LandContour',
