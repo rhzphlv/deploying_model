@@ -1,4 +1,4 @@
-from deployment_model.data_management.data_management import load_pipeline
+from deployment_model.processing.data_management import load_pipeline
 from deployment_model.config import config
 import pandas as pd
 

@@ -4,7 +4,7 @@ import joblib
 
 from deployment_model import pipeline
 from deployment_model.config import config
-from deployment_model.data_management.data_management import load_and_split, save_pipeline 
+from deployment_model.processing.data_management import load_and_split, save_pipeline 
 
 def run_training()->None:
 	x_train, x_test, y_train, y_test= load_and_split(filename=config.TRAIN_DATA)

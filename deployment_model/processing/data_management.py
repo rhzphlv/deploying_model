@@ -2,6 +2,7 @@ import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split as tts
 from deployment_model.config import config
+from deployment_model.processing.validation import validate_data
 
 #i create this funtion to avoid split test and train data
 def load_and_split(*,filename: str) -> pd.DataFrame:
@@ -16,7 +17,8 @@ def load_and_split(*,filename: str) -> pd.DataFrame:
 
 def load_test_set(*,filename: str)->pd.DataFrame:
 	_data = pd.read_csv(f"{config.DATASETS_DIR}/{filename}")
-	_data = _data[config.SELECTED_FEATURES] 
+	_data = validate_data(input_data = _data)
+	_data = _data[config.SELECTED_FEATURES]
 	return _data
 
 
