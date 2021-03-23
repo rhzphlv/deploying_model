@@ -16,6 +16,9 @@ from feature_engine.imputation import (
 )
 
 from deployment_model.config import config
+import logging
+
+_logger = logging.getLogger(__name__)
 
 #normal sklearn pipeline
 #define what feature that we want to engineer

@@ -13,7 +13,7 @@ def test_single_value():
 
 	#Then
 	assert subject is not None
-	assert isinstance(subject.get('preds')[0],float)
+	assert isinstance(subject.get('predictions')[0],float)
 
 
 def test_validation():
@@ -27,4 +27,4 @@ def test_validation():
 
 	#Then
 	#num of row after dropping NA values = 566
-	assert len(subject.get('preds')) == 566
+	assert len(subject.get('predictions')) == 566

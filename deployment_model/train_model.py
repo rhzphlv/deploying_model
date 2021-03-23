@@ -5,6 +5,11 @@ import joblib
 from deployment_model import pipeline
 from deployment_model.config import config
 from deployment_model.processing.data_management import load_and_split, save_pipeline 
+from deployment_model import __version__ as _version
+
+import logging
+
+_logger = logging.getLogger("deployment_model")
 
 def run_training()->None:
 	x_train, x_test, y_train, y_test= load_and_split(filename=config.TRAIN_DATA)
@@ -29,6 +34,7 @@ def run_training()->None:
 	print('Test r2 \t: {}'.format(r2_score(y_test, pred)))
 	print("\n")
 
+	_logger.info(f"saving model version: {_version}")
 	save_pipeline(pipeline_to_persist = pipeline.house_pipe)
 
 if __name__ == "__main__":

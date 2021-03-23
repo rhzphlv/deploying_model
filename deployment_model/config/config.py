@@ -7,7 +7,8 @@ TRAINED_DIR = ROOT_DIR / "trained_model"
 DATASETS_DIR = ROOT_DIR / "datasets"
 
 #define pipeline name, test file, train file and target variable
-PIPELINE_NAME = "regression_model.pkl"
+PIPELINE_NAME = "regression_model"
+PIPELINE_FILE = f"{PIPELINE_NAME}v"
 TEST_DATA = "test.csv"
 TRAIN_DATA = "train.csv"
 TARGET = 'SalePrice'
